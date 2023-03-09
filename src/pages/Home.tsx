@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Counter from "./FunctionComponent";
 export const Home = () => {
     const [count, setCount] = React.useState(0);
 
@@ -74,6 +75,8 @@ export const Home = () => {
             <h1>Home</h1>
             <p>Count: {count}</p>
             <button onClick={() => setCount((prev) => prev + 1)}>Click</button>
+
+            <Counter />
         </div>
     );
 };
