@@ -11,8 +11,8 @@ import { NotFoundPage } from './pages/Error';
 
 function App() {
   return (
-    <div className="App">
-      <Router basename="/">
+    <div className="App" id='App'>
+      <Router basename="/React-Function-Component-LifeCycle">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFoundPage />}></Route>
