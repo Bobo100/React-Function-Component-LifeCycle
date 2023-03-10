@@ -26,7 +26,7 @@ function FunctionComponentCycleLife() {
     });
 
     return (
-        <div className='container'>            
+        <div className='container'>
             <h1>Function Component生命週期</h1>
             <p>React 16.8版本之後，可以使用Hook來實現生命週期的功能。</p>
             <p>Hook是一個可以讓你在函數組件中使用state以及其他的React特性的函數。</p>
@@ -104,6 +104,10 @@ useEffect(() => {
             <p>同時第二個和第三個 useEffect hook 也會觸發</p>
             <p>第二個 useEffect 會將 "componentDidUpdate: You clicked 0 times" 記錄到控制台中。</p>
             <p>第三個 useEffect 則會執行 return</p>
+
+            {/* useEffect 的第一個參數接收到的函式會在 render 階段的完結後才會被呼叫，
+            所以當程式遇到 useEffect 時只會把它加入一個隊列中排隊等待 render 完成後才會執行指定的函式內容。
+            而且，也許不會因為每次 render 都會重新生成 useEffect 而導致不小心重複添加地監聽器或者偵聽器等等問題。 */}
 
             <h3>更新（DidUpdate）</h3>
             <p>接著當使用者與應用程序交互以改變 count 變量並再次渲染時，第二個 useEffect hook 會被觸發。
