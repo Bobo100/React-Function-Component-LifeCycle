@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CodeBlockTS } from './component/Common';
+import Prism from "prismjs";
 
 function FunctionComponentCycleLife() {
 
@@ -14,6 +15,7 @@ function FunctionComponentCycleLife() {
     // mimicking componentDidUpdate
     useEffect(() => {
         console.log(`componentDidUpdate: You clicked ${count} times`);
+        Prism.highlightAll()
     }, [count]);
 
     // mimicking componentWillUnmount 
@@ -30,6 +32,7 @@ function FunctionComponentCycleLife() {
             <p>Hook是一個可以讓你在函數組件中使用state以及其他的React特性的函數。</p>
 
             <p>我們使用三個 useEffect hook 來模仿生命週期</p>
+            <p>用來呈現componentDidMout、componentDidUpdate和componentWillUnmount </p>
             <p>請開啟F12，開發人員選項並到console去看訊息</p>
             <div className='flex align-center border'>
                 <div className='flex flex-column text'>
