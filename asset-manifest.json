@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/React-Function-Component-LifeCycle/static/css/main.4818d502.css",
+    "main.css": "/React-Function-Component-LifeCycle/static/css/main.2c15fec1.css",
     "main.js": "/React-Function-Component-LifeCycle/static/js/main.dc7031a4.js",
     "index.html": "/React-Function-Component-LifeCycle/index.html",
-    "main.4818d502.css.map": "/React-Function-Component-LifeCycle/static/css/main.4818d502.css.map",
+    "main.2c15fec1.css.map": "/React-Function-Component-LifeCycle/static/css/main.2c15fec1.css.map",
     "main.dc7031a4.js.map": "/React-Function-Component-LifeCycle/static/js/main.dc7031a4.js.map"
   },
   "entrypoints": [
-    "static/css/main.4818d502.css",
+    "static/css/main.2c15fec1.css",
     "static/js/main.dc7031a4.js"
   ]
 }
