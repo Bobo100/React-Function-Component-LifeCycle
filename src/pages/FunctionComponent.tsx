@@ -4,26 +4,73 @@ import Prism from "prismjs";
 
 function FunctionComponentCycleLife() {
 
-    // state for count
-    const [count, setCount] = useState(0);
+    // 透過button來觀察componentDidMount
+    const [isMounted, setIsMounted] = useState(false);
 
+    const handleMount = () => {
+        setIsMounted((isMounted) => !isMounted);
+    }
     // mimicking componentDidMount
     useEffect(() => {
         console.log('ComponentDidMount')
-    }, []);
+    }, [isMounted]);
+
+
+    // 透過button來觀察componentDidUpdate
+    const [count, setCount] = useState(0);
+
+    const [isUpdate, setIsUpdate] = useState(false);
+
+    const handleUpdate = () => {
+        setIsUpdate(true);
+        setCount((count) => count + 1);
+    }
 
     // mimicking componentDidUpdate
     useEffect(() => {
-        console.log(`componentDidUpdate: You clicked ${count} times`);
+        if (isUpdate)
+            console.log(`componentDidUpdate: You clicked ${count} times`);
         Prism.highlightAll()
-    }, [count]);
+    }, [count, isUpdate]);
 
-    // mimicking componentWillUnmount 
+
+
+    // 透過button來觀察componentWillUnmount
+    const [isUnmount, setIsUnmount] = useState(false);
+
+    const handleUnmount = () => {
+        setIsUnmount((isUnmount) => !isUnmount);
+    }
+
+    // mimicking componentWillUnmount
     useEffect(() => {
         return () => {
             console.log('componentWillUnmount');
         }
-    });
+    }, [isUnmount]);
+
+
+
+    // state for count
+    // const [count, setCount] = useState(0);
+
+    // // mimicking componentDidMount
+    // useEffect(() => {
+    //     console.log('ComponentDidMount')
+    // }, []);
+
+    // // mimicking componentDidUpdate
+    // useEffect(() => {
+    //     console.log(`componentDidUpdate: You clicked ${count} times`);
+    //     Prism.highlightAll()
+    // }, [count]);
+
+    // // mimicking componentWillUnmount 
+    // useEffect(() => {
+    //     return () => {
+    //         console.log('componentWillUnmount');
+    //     }
+    // });
 
     return (
         <div className='container'>
@@ -38,6 +85,10 @@ function FunctionComponentCycleLife() {
                 <div className='flex flex-column text'>
                     <p>當第一次渲染時，我們會在控制台中看到</p>
                     <p>ComponentDidMount</p>
+                    <p>我們這邊特別使用了一個button，用來觀察componentDidMount</p>
+                    <p>當我們點擊button時，我們會在console看到</p>
+                    <p>ComponentDidMount</p>
+                    <button onClick={handleMount}>Mount</button>
                 </div>
                 <CodeBlockTS>
                     {`
@@ -48,10 +99,11 @@ useEffect(() => {
 `}
                 </CodeBlockTS>
             </div>
-            <p>接著，我們設定了一個count Button</p>
+            <p>接著，我們設定了一個count Button，用來觀察componentDidUpdate</p>
             <div className='flex align-center'>
-                <p>You clicked {count} times</p>
-                <button onClick={() => setCount(count + 1)}>Click me</button>
+                <button onClick={handleUpdate}>Update</button>
+                {/* <p>You clicked {count} times</p>
+                <button onClick={() => setCount(count + 1)}>Click me</button> */}
             </div>
             <div className='flex align-center'>
 
@@ -59,9 +111,9 @@ useEffect(() => {
             <div className='flex align-center border'>
                 <div className='flex flex-column text'>
                     <p>因為，useEffect會根據depency array來決定是否要執行，所以我們可以在depency array中放入count，當count改變時，我們會在控制台中看到componentDidUpdate</p>
-                    <p>第一次載入頁面的時候，count為0</p>
-                    <p>你會在console看到</p>
-                    <p>componentDidUpdate: You clicked 0 times</p>
+                    {/* <p>第一次載入頁面的時候，count為0</p> */}
+                    {/* <p>你會在console看到</p> */}
+                    {/* <p>componentDidUpdate: You clicked 0 times</p> */}
                 </div>
                 <CodeBlockTS>
                     {`
@@ -85,6 +137,8 @@ useEffect(() => {
                     <p>React 會在執行清除操作之前執行 useEffect 中的 return 函數。</p>
                     <p>這就是為什麼在 useEffect 中使用 return 函數來清除訂閱的原因。</p>
                     <p>現在直接呼叫這個 function 並不是真的卸載 component，只是模擬一下 componentWillUnmount 方法。</p>
+                    <p>那一樣，我寫了一個button可以讓你模擬</p>
+                    <button onClick={handleUnmount}>Unmount</button>
                 </div>
                 <CodeBlockTS>
                     {`
@@ -120,6 +174,8 @@ useEffect(() => {
             <p>就會先把上一次的Cleanup function執行 (return裡面的function) </p>
             <p>然後再執行第三個 useEffect，所以，我們會在控制台看到componentWillUnmount</p>
 
+
+            <button className='button' onClick={() => window.location.href = 'https://react-class-component-life-cycle.vercel.app/'}>回去看Class Component 生命週期</button>
         </div >
     );
 }
