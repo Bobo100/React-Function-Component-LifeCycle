@@ -1,20 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
 .App {
     background-color: #282c34;
-    // min-height: 100vh;
-    display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
     font-size: 2vmin;
     color: white;
-    // text-align: center;
 }
 
 .container {
-    align-items: flex-start;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     margin: 20px auto;
     max-width: 1440px;
 }
@@ -52,14 +51,29 @@ h3 {
 h1 {
     background-color: #ffa601;
     color: #383838;
-    font-size: 3rem;
     font-weight: 700;
 }
 
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.17em;
+}
+
+h4 {
+    font-size: 1em;
+}
 
 p {
     margin: 0;
     padding: 10px;
+    font-size: 1em;
 }
 
 button {

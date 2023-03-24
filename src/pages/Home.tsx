@@ -1,4 +1,3 @@
-import './css/Home.scss'
 import FunctionComponentCycleLife from './FunctionComponent';
 
 import SetInterval from './SetInterval';
